@@ -1,0 +1,3 @@
+-c stretchtheirlegs-website/requirements.dev.in
+-c stretchtheirlegs-website/requirements.in
+-e ./wagtail
