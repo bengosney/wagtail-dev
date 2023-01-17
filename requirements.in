@@ -1,3 +1,4 @@
--c stretchtheirlegs-website/requirements.dev.in
--c stretchtheirlegs-website/requirements.in
 -e ./wagtail
+-e ./wagtail-picture-tag
+-r stretchtheirlegs-website/requirements.dev.in
+-r stretchtheirlegs-website/requirements.in

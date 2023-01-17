@@ -18,6 +18,9 @@ help: ## Display this help
 wagtail:
 	git clone git@github.com:bengosney/wagtail.git
 
+wagtail-picture-tag:
+	git clone git@github.com:bengosney/wagtail-picture-tag.git
+
 stretchtheirlegs-website:
 	git clone git@github.com:bengosney/stretchtheirlegs-website.git
 
@@ -35,16 +38,16 @@ stretchtheirlegs-website:
 requirements.%.in:
 	echo "-c requirements.txt" > $@
 
-requirements.in: stretchtheirlegs-website wagtail
+requirements.in: stretchtheirlegs-website wagtail wagtail-picture-tag
 	@touch $@
 
 requirements.%.txt: $(PIP_SYNC_PATH) requirements.%.in requirements.txt
 	@echo "Builing $@"
-	@python -m piptools compile --generate-hashes -q -o $@ $(filter-out $<,$^)
+	@python -m piptools compile -q -o $@ $(filter-out $<,$^)
 
 requirements.txt: $(PIP_SYNC_PATH) requirements.in
 	@echo "Builing $@"
-	@python -m piptools compile --generate-hashes -q $(filter-out $<,$^)
+	@python -m piptools compile -q $(filter-out $<,$^)
 
 .direnv: .envrc
 	@python -m ensurepip
